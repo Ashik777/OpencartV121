@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  
+  <!-- Groups that are included for execution -->
+  <groups>
+    <run>
+      <include name="sanity" /> 
+      <include name="regression" />
+      <!-- Optionally, you can add <include name="master" /> if necessary -->
+    </run>
+  </groups>
+  
+  <!-- Adding the listener to generate Extent Reports -->
+  <listeners>
+    <listener class-name="utilities.ExtentReportManager"/>
+  </listeners> 
+  
+  <!-- Test section -->
+  <test thread-count="5" name="Test">
+  
+    <!-- Parameters for OS and Browser -->
+    <parameter name="os" value="mac" />
+    <parameter name="browser" value="chrome"/>  
+       
+    <!-- Test classes that will be executed -->
+    <classes>
+      <class name="testCases.TC01_AccountRegistrationTest"/>
+      <class name="testCases.TC02_LoginTest"/>
+      <!-- Uncomment and include if needed -->
+      <!-- <class name="testCases.TC_003_LoginDDT"/> -->
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
